@@ -1,4 +1,4 @@
-﻿namespace UnitConverter.Mvc.Utils;
+﻿namespace UnitConverter.Mvc.Converters;
 
 public interface IWeightConverter : IConverter
 {

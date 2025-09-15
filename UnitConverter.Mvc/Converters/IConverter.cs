@@ -1,10 +1,10 @@
 ﻿using UnitConverter.Mvc.Models;
 using UnitConverter.Mvc.Models.Enums;
 
-namespace UnitConverter.Mvc.Utils;
+namespace UnitConverter.Mvc.Converters;
 
 public interface IConverter
 {
     ConverterType ConverterType { get; }
-    ResultModel Convert(LengthUnit unitFrom, LengthUnit unitTo, decimal value);
+    ResultModel Convert(Units unitFrom, Units unitTo, decimal value);
 }

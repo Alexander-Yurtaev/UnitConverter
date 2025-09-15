@@ -1,4 +1,4 @@
-﻿using UnitConverter.Mvc.Utils;
+﻿using UnitConverter.Mvc.Converters;
 
 namespace UnitConverter.Mvc.Extensions
 {
@@ -9,6 +9,7 @@ namespace UnitConverter.Mvc.Extensions
             service.AddSingleton<IConverterFactory, ConverterFactory>();
 
             service.AddSingleton<ILengthConverter, LengthConverter>();
+            service.AddSingleton<IWeightConverter, WeightConverter>();
 
             return service;
         }

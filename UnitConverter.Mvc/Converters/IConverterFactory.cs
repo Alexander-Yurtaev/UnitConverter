@@ -1,7 +1,6 @@
-﻿using UnitConverter.Mvc.Models;
-using UnitConverter.Mvc.Models.Enums;
+﻿using UnitConverter.Mvc.Models.Enums;
 
-namespace UnitConverter.Mvc.Utils;
+namespace UnitConverter.Mvc.Converters;
 
 public interface IConverterFactory
 {

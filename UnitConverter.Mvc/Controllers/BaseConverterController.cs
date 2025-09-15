@@ -1,21 +1,39 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using UnitConverter.Mvc.Converters;
 using UnitConverter.Mvc.Models;
+using UnitConverter.Mvc.Models.Enums;
 
 namespace UnitConverter.Mvc.Controllers
 {
     public abstract class BaseConverterController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        protected readonly IConverterFactory ConverterFactory;
+        protected readonly ILogger<HomeController> Logger;
+        protected abstract ConverterType ConverterType { get; }
 
-        protected BaseConverterController(ILogger<HomeController> logger)
+        protected BaseConverterController(IConverterFactory converterFactory, ILogger<HomeController> logger)
         {
-            _logger = logger;
+            ConverterFactory = converterFactory;
+            Logger = logger;
         }
 
-        public abstract IActionResult Index();
+        public virtual IActionResult Index()
+        {
+            var model = new FormModel
+            {
+                UnitItems = GetUnitItems()
+            };
+            return View(model);
+        }
 
-        public abstract IActionResult Convert(FormModel model);
+        public virtual IActionResult Convert(FormModel model)
+        {
+            var converter = ConverterFactory.GetConverter(this.ConverterType);
+            var result = converter.Convert((Units)model.UnitFrom, (Units)model.UnitTo, model.ValueFrom);
+
+            return View(result);
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
