@@ -1,0 +1,16 @@
+﻿using UnitConverter.Mvc.Utils;
+
+namespace UnitConverter.Mvc.Extensions
+{
+    public static class ConverterExtensions
+    {
+        public static IServiceCollection AddConverterFactory(this IServiceCollection service)
+        {
+            service.AddSingleton<IConverterFactory, ConverterFactory>();
+
+            service.AddSingleton<ILengthConverter, LengthConverter>();
+
+            return service;
+        }
+    }
+}

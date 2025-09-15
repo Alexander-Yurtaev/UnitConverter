@@ -1,0 +1,7 @@
+﻿@model UnitConverter.Mvc.Models.FormModel
+@{
+    ViewData["Title"] = "Length converter";
+    Layout = "_EmptyLayout";
+}
+
+@await Html.PartialAsync("_ConverterForm", Model)

@@ -1,3 +1,5 @@
+using UnitConverter.Mvc.Extensions;
+
 namespace UnitConverter.Mvc
 {
     public class Program
@@ -9,6 +11,8 @@ namespace UnitConverter.Mvc
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
+            builder.Services.AddConverterFactory();
+            
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
