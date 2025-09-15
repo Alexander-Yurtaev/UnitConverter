@@ -10,6 +10,7 @@ namespace UnitConverter.Mvc.Extensions
 
             service.AddSingleton<ILengthConverter, LengthConverter>();
             service.AddSingleton<IWeightConverter, WeightConverter>();
+            service.AddSingleton<ITemperatureConverter, TemperatureConverter>();
 
             return service;
         }
