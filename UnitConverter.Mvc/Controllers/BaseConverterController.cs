@@ -29,10 +29,32 @@ namespace UnitConverter.Mvc.Controllers
 
         public virtual IActionResult Convert(FormModel model)
         {
-            var converter = ConverterFactory.GetConverter(this.ConverterType);
-            var result = converter.Convert((Units)model.UnitFrom, (Units)model.UnitTo, model.ValueFrom);
+            if (!ModelState.IsValid)
+            {
+                var result = new ResultModel { ErrorMessage = "Incorrect input data" };
 
-            return View(result);
+                ModelState.AddModelError(string.Empty, result.ErrorMessage);
+                return View(result);
+            }
+
+            try
+            {
+                var converter = ConverterFactory.GetConverter(this.ConverterType);
+                var result = converter.Convert((Units)model.UnitFrom, (Units)model.UnitTo, model.ValueFrom);
+
+                return View(result);
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                var result = new ResultModel { ErrorMessage = "Conversion error: incorrect units or value" };
+                ModelState.AddModelError(string.Empty, result.ErrorMessage);
+                return View(result);
+            }
+            catch (Exception ex)
+            {
+                // Обработка других исключений
+                return StatusCode(500, "An internal server error has occurred");
+            }
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

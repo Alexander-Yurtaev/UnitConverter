@@ -23,7 +23,7 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        @foreach (var converter in ConverterService.GetAllConverters())
+                        @foreach (var converter in ConverterService.GetCachedAllConverters())
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-dark"
@@ -39,11 +39,27 @@
             </div>
         </nav>
     </header>
-    <div class="container">
+<div class="container">
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div class="alert alert-danger">
+            @Html.ValidationSummary()
+        </div>
+        <button type="button" 
+                class="btn btn-secondary"
+                asp-action="Index"
+                onclick="document.location.href='@Url.Action("Index")'">
+            Reset
+        </button>
+        IgnoreBody();
+    }
+    else
+    {
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
-    </div>
+    }
+</div>
 
     <footer class="border-top footer text-muted">
         <div class="container">
