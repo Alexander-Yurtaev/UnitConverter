@@ -22,141 +22,96 @@ public class WeightConverter : IWeightConverter
 
     private ResultModel MilligramsTo(Units unitTo, Units unitFrom, decimal value)
     {
-        ResultModel result;
         switch (unitTo)
         {
             case Units.Milligrams:
-                result = new ResultModel { ValueTo = value };
-                break;
+                return new ResultModel {OriginalUnit = Units.Milligrams, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value };
             case Units.Gram:
-                result = new ResultModel { ValueTo = value / 1000m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Milligrams, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value / 1000m };
             case Units.Kilogram:
-                result = new ResultModel { ValueTo = value / 1000m / 1000m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Milligrams, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value / 1000m / 1000m };
             case Units.Ounce:
-                result = new ResultModel { ValueTo = value / 16m / 2.20462m / 1000m / 1000m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Milligrams, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value / 16m / 2.20462m / 1000m / 1000m };
             case Units.Pound:
-                result = new ResultModel { ValueTo = value / 2.20462m / 1000m / 1000m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Milligrams, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value / 2.20462m / 1000m / 1000m };
             default:
-                return new ResultModel { Message = $"Error! Unknown UnitTo = {unitTo}" };
+                return new ResultModel { ErrorMessage = $"Error! Unknown UnitTo = {unitTo}" };
         }
-
-        result.Message = unitTo.ToString();
-        return result;
     }
 
     private ResultModel GramTo(Units unitTo, Units unitFrom, decimal value)
     {
-        ResultModel result;
         switch (unitTo)
         {
             case Units.Milligrams:
-                result = new ResultModel { ValueTo = value * 1000m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Gram, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value * 1000m };
             case Units.Gram:
-                result = new ResultModel { ValueTo = value };
-                break;
+                return new ResultModel { OriginalUnit = Units.Gram, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value };
             case Units.Kilogram:
-                result = new ResultModel { ValueTo = value / 1000m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Gram, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value / 1000m };
             case Units.Ounce:
-                result = new ResultModel { ValueTo = value / 28.3495m };
-                break;
+                return new ResultModel {OriginalUnit = Units.Gram, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value / 28.3495m };
             case Units.Pound:
-                result = new ResultModel { ValueTo = value / 2.20462m / 1000m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Gram, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value / 2.20462m / 1000m };
             default:
-                return new ResultModel { Message = $"Error! Unknown UnitTo = {unitTo}" };
+                return new ResultModel { ErrorMessage = $"Error! Unknown UnitTo = {unitTo}" };
         }
-
-        result.Message = unitTo.ToString();
-        return result;
     }
 
     private ResultModel KilogramTo(Units unitTo, Units unitFrom, decimal value)
     {
-        ResultModel result;
         switch (unitTo)
         {
             case Units.Milligrams:
-                result = new ResultModel { ValueTo = value * 1000m * 1000m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Kilogram, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value * 1000m * 1000m };
             case Units.Gram:
-                result = new ResultModel { ValueTo = value * 1000m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Kilogram, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value * 1000m };
             case Units.Kilogram:
-                result = new ResultModel { ValueTo = value };
-                break;
+                return new ResultModel { OriginalUnit = Units.Kilogram, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value };
             case Units.Ounce:
-                result = new ResultModel { ValueTo = value / 16m / 2.20462m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Kilogram, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value / 16m / 2.20462m };
             case Units.Pound:
-                result = new ResultModel { ValueTo = value * 2.20462m };
-                break;
+                return new ResultModel {OriginalUnit = Units.Kilogram, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value * 2.20462m };
             default:
-                return new ResultModel { Message = $"Error! Unknown UnitTo = {unitTo}" };
+                return new ResultModel { ErrorMessage = $"Error! Unknown UnitTo = {unitTo}" };
         }
-
-        result.Message = unitTo.ToString();
-        return result;
     }
 
     private ResultModel OunceTo(Units unitTo, Units unitFrom, decimal value)
     {
-        ResultModel result;
         switch (unitTo)
         {
             case Units.Milligrams:
-                result = new ResultModel { ValueTo = value / 16m / 2.20462m * 1000m * 1000m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Ounce, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value / 16m / 2.20462m * 1000m * 1000m };
             case Units.Gram:
-                result = new ResultModel { ValueTo = value * 28.3495m };
-                break;
+                return new ResultModel {OriginalUnit = Units.Ounce, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value * 28.3495m };
             case Units.Kilogram:
-                result = new ResultModel { ValueTo = value / 16m / 2.20462m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Ounce, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value / 16m / 2.20462m };
             case Units.Ounce:
-                result = new ResultModel { ValueTo = value };
-                break;
+                return new ResultModel { OriginalUnit = Units.Ounce, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value };
             case Units.Pound:
-                result = new ResultModel { ValueTo = value / 16m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Ounce, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value / 16m };
             default:
-                return new ResultModel { Message = $"Error! Unknown UnitTo = {unitTo}" };
+                return new ResultModel { ErrorMessage = $"Error! Unknown UnitTo = {unitTo}" };
         }
-
-        result.Message = unitTo.ToString();
-        return result;
     }
 
     private ResultModel PoundTo(Units unitTo, Units unitFrom, decimal value)
     {
-        ResultModel result;
         switch (unitTo)
         {
             case Units.Milligrams:
-                result = new ResultModel { ValueTo = value * 16m / 2.20462m * 1000m * 1000m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Pound, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value * 16m / 2.20462m * 1000m * 1000m };
             case Units.Gram:
-                result = new ResultModel { ValueTo = value * 16m / 2.20462m * 1000m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Pound, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value * 16m / 2.20462m * 1000m };
             case Units.Kilogram:
-                result = new ResultModel { ValueTo = value / 2.20462m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Pound, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value / 2.20462m };
             case Units.Ounce:
-                result = new ResultModel { ValueTo = value * 16m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Pound, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value * 16m };
             case Units.Pound:
-                result = new ResultModel { ValueTo = value };
-                break;
+                return new ResultModel { OriginalUnit = Units.Pound, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value };
             default:
-                return new ResultModel { Message = $"Error! Unknown UnitTo = {unitTo}" };
+                return new ResultModel { ErrorMessage = $"Error! Unknown UnitTo = {unitTo}" };
         }
-
-        result.Message = unitTo.ToString();
-        return result;
     }
 }

@@ -28,7 +28,7 @@ public class BaseConverterFactoryTests
 
         // Assert
         actual.Should().NotBeNull();
-        actual.ValueTo.Should().NotBeNull();
-        actual.ValueTo.Should().BeApproximately(expected, 0.00001m, $"{unitFrom} -> {unitTo}: {value} -> {actual.ValueTo} -> {expected}");
+        actual.ConvertedValue.Should().NotBeNull();
+        actual.ConvertedValue.Should().BeApproximately(expected, 0.00001m, $"{unitFrom} -> {unitTo}: {value} -> {actual.ConvertedValue} -> {expected}");
     }
 }

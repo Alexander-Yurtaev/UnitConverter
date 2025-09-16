@@ -25,297 +25,201 @@ public class LengthConverter : ILengthConverter
 
     private ResultModel MillimeterTo(Units unitTo, decimal value)
     {
-        ResultModel result;
         switch (unitTo)
         {
             case Units.Millimeter:
-                result = new ResultModel{ValueTo = value};
-                break;
+                return new ResultModel { OriginalUnit = Units.Millimeter, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value };
             case Units.Centimeter:
-                result = new ResultModel { ValueTo = value / 10m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Millimeter, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value / 10m };
             case Units.Meter:
-                result = new ResultModel { ValueTo = value / 10m / 100m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Millimeter, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value / 10m / 100m };
             case Units.Kilometer:
-                result = new ResultModel { ValueTo = value / 10m / 100m / 1000m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Millimeter, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value / 10m / 100m / 1000m };
             case Units.Inch:
-                result = new ResultModel { ValueTo = value / 10m / 2.54m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Millimeter, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value / 10m / 2.54m };
             case Units.Foot:
-                result = new ResultModel { ValueTo = value / 10m / 2.54m / 12m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Millimeter, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value / 10m / 2.54m / 12m };
             case Units.Yard:
-                result = new ResultModel { ValueTo = value / 10m / 2.54m / 12m / 3m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Millimeter, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value / 10m / 2.54m / 12m / 3m };
             case Units.Mile:
-                result = new ResultModel { ValueTo = value / 10m / 2.54m / 12m / 3m / 1760m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Millimeter, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value / 10m / 2.54m / 12m / 3m / 1760m };
             default:
-                return new ResultModel{ Message = $"Error! Unknown UnitTo = {unitTo}" };
+                return new ResultModel { ErrorMessage = $"Error! Unknown UnitTo = {unitTo}" };
         }
-
-        result.Message = unitTo.ToString();
-        return result;
     }
 
     private ResultModel CentimeterTo(Units unitTo, decimal value)
     {
-        ResultModel result;
         switch (unitTo)
         {
             case Units.Millimeter:
-                result = new ResultModel { ValueTo = value * 10m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Centimeter, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value * 10m };
             case Units.Centimeter:
-                result = new ResultModel { ValueTo = value };
-                break;
+                return new ResultModel { OriginalUnit = Units.Centimeter, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value };
             case Units.Meter:
-                result = new ResultModel { ValueTo = value / 100m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Centimeter, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value / 100m };
             case Units.Kilometer:
-                result = new ResultModel { ValueTo = value / 100m / 1000m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Centimeter, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value / 100m / 1000m };
             case Units.Inch:
-                result = new ResultModel { ValueTo = value / 2.54m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Centimeter, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value / 2.54m };
             case Units.Foot:
-                result = new ResultModel { ValueTo = value / 2.54m / 12m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Centimeter, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value / 2.54m / 12m };
             case Units.Yard:
-                result = new ResultModel { ValueTo = value / 2.54m / 12m / 3m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Centimeter, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value / 2.54m / 12m / 3m };
             case Units.Mile:
-                result = new ResultModel { ValueTo = value / 2.54m / 12m / 3m / 1760m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Centimeter, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value / 2.54m / 12m / 3m / 1760m };
             default:
-                return new ResultModel { Message = $"Error! Unknown UnitTo = {unitTo}" };
+                return new ResultModel { ErrorMessage = $"Error! Unknown UnitTo = {unitTo}" };
         }
-
-        result.Message = unitTo.ToString();
-        return result;
     }
 
     private ResultModel MeterTo(Units unitTo, decimal value)
     {
-        ResultModel result;
         switch (unitTo)
         {
             case Units.Millimeter:
-                result = new ResultModel { ValueTo = value * 10m * 100m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Meter, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value * 10m * 100m };
             case Units.Centimeter:
-                result = new ResultModel { ValueTo = value * 100m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Meter, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value * 100m };
             case Units.Meter:
-                result = new ResultModel { ValueTo = value };
-                break;
+                return new ResultModel { OriginalUnit = Units.Meter, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value };
             case Units.Kilometer:
-                result = new ResultModel { ValueTo = value / 1000m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Meter, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value / 1000m };
             case Units.Inch:
-                result = new ResultModel { ValueTo = value * 100m / 2.54m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Meter, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value * 100m / 2.54m };
             case Units.Foot:
-                result = new ResultModel { ValueTo = value * 100m / 2.54m / 12m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Meter, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value * 100m / 2.54m / 12m };
             case Units.Yard:
-                result = new ResultModel { ValueTo = value * 100m / 2.54m / 12m / 3m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Meter, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value * 100m / 2.54m / 12m / 3m };
             case Units.Mile:
-                result = new ResultModel { ValueTo = value * 100m / 2.54m / 12m / 3m / 1760m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Meter, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value * 100m / 2.54m / 12m / 3m / 1760m };
             default:
-                return new ResultModel { Message = $"Error! Unknown UnitTo = {unitTo}" };
+                return new ResultModel { ErrorMessage = $"Error! Unknown UnitTo = {unitTo}" };
         }
-
-        result.Message = unitTo.ToString();
-        return result;
     }
 
     private ResultModel KilometerTo(Units unitTo, decimal value)
     {
-        ResultModel result;
         switch (unitTo)
         {
             case Units.Millimeter:
-                result = new ResultModel { ValueTo = value * 10m * 100m * 1000m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Kilometer, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value * 10m * 100m * 1000m };
             case Units.Centimeter:
-                result = new ResultModel { ValueTo = value * 100m * 1000m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Kilometer, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value * 100m * 1000m };
             case Units.Meter:
-                result = new ResultModel { ValueTo = value * 1000m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Kilometer, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value * 1000m };
             case Units.Kilometer:
-                result = new ResultModel { ValueTo = value };
-                break;
+                return new ResultModel { OriginalUnit = Units.Kilometer, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value };
             case Units.Inch:
-                result = new ResultModel { ValueTo = value * 100m * 1000m / 2.54m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Kilometer, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value * 100m * 1000m / 2.54m };
             case Units.Foot:
-                result = new ResultModel { ValueTo = value * 100m * 1000m / 2.54m / 12m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Kilometer, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value * 100m * 1000m / 2.54m / 12m };
             case Units.Yard:
-                result = new ResultModel { ValueTo = value * 100m * 1000m / 2.54m / 12m / 3m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Kilometer, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value * 100m * 1000m / 2.54m / 12m / 3m };
             case Units.Mile:
-                result = new ResultModel { ValueTo = value * 100m * 1000m / 2.54m / 12m / 3m / 1760m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Kilometer, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value * 100m * 1000m / 2.54m / 12m / 3m / 1760m };
             default:
-                return new ResultModel { Message = $"Error! Unknown UnitTo = {unitTo}" };
+                return new ResultModel { ErrorMessage = $"Error! Unknown UnitTo = {unitTo}" };
         }
-
-        result.Message = unitTo.ToString();
-        return result;
     }
 
     private ResultModel InchTo(Units unitTo, decimal value)
     {
-        ResultModel result;
         switch (unitTo)
         {
             case Units.Millimeter:
-                result = new ResultModel { ValueTo = value * 10m * 2.54m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Inch, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value * 10m * 2.54m };
             case Units.Centimeter:
-                result = new ResultModel { ValueTo = value * 2.54m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Inch, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value * 2.54m };
             case Units.Meter:
-                result = new ResultModel { ValueTo = value * 2.54m / 100m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Inch, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value * 2.54m / 100m };
             case Units.Kilometer:
-                result = new ResultModel { ValueTo = value * 2.54m / 100m / 1000m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Inch, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value * 2.54m / 100m / 1000m };
             case Units.Inch:
-                result = new ResultModel { ValueTo = value };
-                break;
+                return new ResultModel { OriginalUnit = Units.Inch, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value };
             case Units.Foot:
-                result = new ResultModel { ValueTo = value / 12m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Inch, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value / 12m };
             case Units.Yard:
-                result = new ResultModel { ValueTo = value / 12m / 3m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Inch, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value / 12m / 3m };
             case Units.Mile:
-                result = new ResultModel { ValueTo = value / 12m / 3m / 1760m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Inch, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value / 12m / 3m / 1760m };
             default:
-                return new ResultModel { Message = $"Error! Unknown UnitTo = {unitTo}" };
+                return new ResultModel { ErrorMessage = $"Error! Unknown UnitTo = {unitTo}" };
         }
-
-        result.Message = unitTo.ToString();
-        return result;
     }
 
     private ResultModel FootTo(Units unitTo, decimal value)
     {
-        ResultModel result;
         switch (unitTo)
         {
             case Units.Millimeter:
-                result = new ResultModel { ValueTo = value * 12m * 2.54m * 10m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Foot, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value * 12m * 2.54m * 10m };
             case Units.Centimeter:
-                result = new ResultModel { ValueTo = value * 12m * 2.54m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Foot, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value * 12m * 2.54m };
             case Units.Meter:
-                result = new ResultModel { ValueTo = value * 12m * 2.54m / 100m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Foot, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value * 12m * 2.54m / 100m };
             case Units.Kilometer:
-                result = new ResultModel { ValueTo = value * 12m * 2.54m / 100m / 1000m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Foot, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value * 12m * 2.54m / 100m / 1000m };
             case Units.Inch:
-                result = new ResultModel { ValueTo = value * 12m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Foot, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value * 12m };
             case Units.Foot:
-                result = new ResultModel { ValueTo = value };
-                break;
+                return new ResultModel { OriginalUnit = Units.Foot, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value };
             case Units.Yard:
-                result = new ResultModel { ValueTo = value / 3m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Foot, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value / 3m };
             case Units.Mile:
-                result = new ResultModel { ValueTo = value / 3m / 1760m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Foot, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value / 3m / 1760m };
             default:
-                return new ResultModel { Message = $"Error! Unknown UnitTo = {unitTo}" };
+                return new ResultModel { ErrorMessage = $"Error! Unknown UnitTo = {unitTo}" };
         }
-
-        result.Message = unitTo.ToString();
-        return result;
     }
 
     private ResultModel YardTo(Units unitTo, decimal value)
     {
-        ResultModel result;
         switch (unitTo)
         {
             case Units.Millimeter:
-                result = new ResultModel { ValueTo = value * 3m * 12m * 2.54m * 10m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Yard, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value * 3m * 12m * 2.54m * 10m };
             case Units.Centimeter:
-                result = new ResultModel { ValueTo = value * 3m * 12m * 2.54m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Yard, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value * 3m * 12m * 2.54m };
             case Units.Meter:
-                result = new ResultModel { ValueTo = value * 3m * 12m * 2.54m / 100m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Yard, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value * 3m * 12m * 2.54m / 100m };
             case Units.Kilometer:
-                result = new ResultModel { ValueTo = value * 3m * 12m * 2.54m / 100m / 1000m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Yard, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value * 3m * 12m * 2.54m / 100m / 1000m };
             case Units.Inch:
-                result = new ResultModel { ValueTo = value * 12m * 3m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Yard, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value * 12m * 3m };
             case Units.Foot:
-                result = new ResultModel { ValueTo = value * 3m };
-                break;  
+                return new ResultModel { OriginalUnit = Units.Yard, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value * 3m };
             case Units.Yard:
-                result = new ResultModel { ValueTo = value };
-                break;
+                return new ResultModel { OriginalUnit = Units.Yard, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value };
             case Units.Mile:
-                result = new ResultModel { ValueTo = value / 1760m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Yard, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value / 1760m };
             default:
-                return new ResultModel { Message = $"Error! Unknown UnitTo = {unitTo}" };
+                return new ResultModel { ErrorMessage = $"Error! Unknown UnitTo = {unitTo}" };
         }
-
-        result.Message = unitTo.ToString();
-        return result;
     }
 
     private ResultModel MileTo(Units unitTo, decimal value)
     {
-        ResultModel result;
         switch (unitTo)
         {
             case Units.Millimeter:
-                result = new ResultModel { ValueTo = value * value * 1760m * 3m * 12m * 2.54m * 10m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Mile, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value * value * 1760m * 3m * 12m * 2.54m * 10m };
             case Units.Centimeter:
-                result = new ResultModel { ValueTo = value * 2.54m * 12m * 3m * 1760m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Mile, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value * 2.54m * 12m * 3m * 1760m };
             case Units.Meter:
-                result = new ResultModel { ValueTo = value * 1760m * 3m * 12m * 2.54m / 100m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Mile, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value * 1760m * 3m * 12m * 2.54m / 100m };
             case Units.Kilometer:
-                result = new ResultModel { ValueTo = value * 1760m * 3m * 12m * 2.54m / 100m / 1000m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Mile, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value * 1760m * 3m * 12m * 2.54m / 100m / 1000m };
             case Units.Inch:
-                result = new ResultModel { ValueTo = value * 12m * 3m * 1760m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Mile, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value * 12m * 3m * 1760m };
             case Units.Foot:
-                result = new ResultModel { ValueTo = value * 3m * 1760m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Mile, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value * 3m * 1760m };
             case Units.Yard:
-                result = new ResultModel { ValueTo = value * 1760m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Mile, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value * 1760m };
             case Units.Mile:
-                result = new ResultModel { ValueTo = value };
-                break;
+                return new ResultModel { OriginalUnit = Units.Mile, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value };
             default:
-                return new ResultModel { Message = $"Error! Unknown UnitTo = {unitTo}" };
+                return new ResultModel { ErrorMessage = $"Error! Unknown UnitTo = {unitTo}" };
         }
-
-        result.Message = unitTo.ToString();
-        return result;
     }
 }

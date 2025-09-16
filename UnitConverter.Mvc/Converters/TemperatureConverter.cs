@@ -20,67 +20,46 @@ public class TemperatureConverter : ITemperatureConverter
 
     private ResultModel CelsiusTo(Units unitTo, Units unitFrom, decimal value)
     {
-        ResultModel result;
         switch (unitTo)
         {
             case Units.Celsius:
-                result = new ResultModel { ValueTo = value };
-                break;
+                return new ResultModel { OriginalUnit = Units.Celsius, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value };
             case Units.Kelvin:
-                result = new ResultModel { ValueTo = value + 273.15m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Celsius, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value + 273.15m };
             case Units.Fahrenheit:
-                result = new ResultModel { ValueTo = value / (5m/9m) + 32 };
-                break;
+                return new ResultModel {OriginalUnit = Units.Celsius, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value / (5m / 9m) + 32 };
             default:
-                return new ResultModel { Message = $"Error! Unknown UnitTo = {unitTo}" };
+                return new ResultModel { ErrorMessage = $"Error! Unknown UnitTo = {unitTo}" };
         }
-
-        result.Message = unitTo.ToString();
-        return result;
     }
 
     private ResultModel KelvinTo(Units unitTo, Units unitFrom, decimal value)
     {
-        ResultModel result;
         switch (unitTo)
         {
             case Units.Celsius:
-                result = new ResultModel { ValueTo = value - 273.15m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Kelvin, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value - 273.15m };
             case Units.Kelvin:
-                result = new ResultModel { ValueTo = value };
-                break;
+                return new ResultModel { OriginalUnit = Units.Kelvin, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value };
             case Units.Fahrenheit:
-                result = new ResultModel { ValueTo = (value - 273.15m) / (5m / 9m) + 32 };
-                break;
+                return new ResultModel { OriginalUnit = Units.Kelvin, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = (value - 273.15m) / (5m / 9m) + 32 };
             default:
-                return new ResultModel { Message = $"Error! Unknown UnitTo = {unitTo}" };
+                return new ResultModel { ErrorMessage = $"Error! Unknown UnitTo = {unitTo}" };
         }
-
-        result.Message = unitTo.ToString();
-        return result;
     }
 
     private ResultModel FahrenheitTo(Units unitTo, Units unitFrom, decimal value)
     {
-        ResultModel result;
         switch (unitTo)
         {
             case Units.Celsius:
-                result = new ResultModel { ValueTo = (value - 32m) * (5m/9m) };
-                break;
+                return new ResultModel { OriginalUnit = Units.Fahrenheit, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = (value - 32m) * (5m/9m) };
             case Units.Kelvin:
-                result = new ResultModel { ValueTo = (value - 32m) * (5m/9m) + 273.15m };
-                break;
+                return new ResultModel { OriginalUnit = Units.Fahrenheit, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = (value - 32m) * (5m/9m) + 273.15m };
             case Units.Fahrenheit:
-                result = new ResultModel { ValueTo = value };
-                break;
+                return new ResultModel { OriginalUnit = Units.Fahrenheit, OriginalValue = value, ConvertedUnit = unitTo, ConvertedValue = value };
             default:
-                return new ResultModel { Message = $"Error! Unknown UnitTo = {unitTo}" };
+                return new ResultModel { ErrorMessage = $"Error! Unknown UnitTo = {unitTo}" };
         }
-
-        result.Message = unitTo.ToString();
-        return result;
     }
 }

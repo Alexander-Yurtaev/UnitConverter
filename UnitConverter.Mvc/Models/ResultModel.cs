@@ -1,7 +1,14 @@
-﻿namespace UnitConverter.Mvc.Models;
+﻿using UnitConverter.Mvc.Models.Enums;
+
+namespace UnitConverter.Mvc.Models;
 
 public record ResultModel
 {
-    public decimal? ValueTo { get; set; }
-    public string? Message { get; set; }
+    public Units OriginalUnit { get; set; }
+    public decimal OriginalValue { get; set; }
+    
+    public Units ConvertedUnit { get; set; }
+    public decimal? ConvertedValue { get; set; }
+
+    public string? ErrorMessage { get; set; }
 }
