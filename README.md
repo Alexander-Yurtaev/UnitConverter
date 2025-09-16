@@ -1,9 +1,9 @@
 # UnitConverter
 ********************************
 Название: UnitConverter
-Уровень: Beginner/Intermediate/Advanced
-Тип: CLI/web api
-Технологии: <язык, фреймворки и т.д.>
+Уровень: Beginner
+Тип: web app
+Технологии: C#, ASP.NET Core
 Источник задания: [UnitConverter](https://roadmap.sh/projects/unit-converter)
 Статус: Готово
 
@@ -11,9 +11,9 @@
 В текущей версии поддерживаются такие величины как длина, вес и температура.
 ********************************
 Name: UnitConverter
-Level: Beginner/Intermediate/Advanced
-Type: CLI/web api
-Technology: <language, frameworks and etc.>
+Level: Beginner
+Type: web app
+Technology: C#, ASP.NET Core
 Source: [UnitConverter](https://roadmap.sh/projects/unit-converter)
 Stage: Done
 
