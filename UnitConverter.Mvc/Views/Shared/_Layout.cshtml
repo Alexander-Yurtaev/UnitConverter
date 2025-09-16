@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using UnitConverter.Mvc.Services
+@inject ConverterService ConverterService
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -13,33 +16,59 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">UnitConverter.Mvc</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Unit Converter</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
+                        @foreach (var converter in ConverterService.GetCachedAllConverters())
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark"
+                                   asp-area=""
+                                   asp-controller="@converter.ControllerName"
+                                   asp-action="Index">
+                                    @converter.ConverterType.ToString()
+                                </a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
+<div class="container">
+
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div>
+            <h4>@ViewData["Title"]</h4>
+            <hr />
+            <div class="alert alert-danger">
+                @Html.ValidationSummary()
+            </div>
+        </div>
+        <button type="button"
+                class="btn btn-secondary"
+                asp-action="Index"
+                onclick="document.location.href='@Url.Action("Index")'">
+            Reset
+        </button>
+        IgnoreBody();
+    }
+    else
+    {
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
-    </div>
+    }
+</div>
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2025 - UnitConverter.Mvc - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2025 - Unit Converter
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
