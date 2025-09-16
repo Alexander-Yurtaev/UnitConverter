@@ -6,6 +6,7 @@ namespace UnitConverter.Mvc.Converters;
 public class LengthConverter : ILengthConverter
 {
     public ConverterType ConverterType => ConverterType.Length;
+    public string ControllerName => "Length";
 
     public ResultModel Convert(Units unitFrom, Units unitTo, decimal value)
     {

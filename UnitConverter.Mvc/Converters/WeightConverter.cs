@@ -6,6 +6,7 @@ namespace UnitConverter.Mvc.Converters;
 public class WeightConverter : IWeightConverter
 {
     public ConverterType ConverterType => ConverterType.Weight;
+    public string ControllerName => "Weight";
 
     public ResultModel Convert(Units unitFrom, Units unitTo, decimal value)
     {

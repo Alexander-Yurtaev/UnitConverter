@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using UnitConverter.Mvc.Services
+@inject ConverterService ConverterService
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -20,15 +23,17 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Length" asp-action="Index">Length</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Weight" asp-action="Index">Weight</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Temperature" asp-action="Index">Temperature</a>
-                        </li>
+                        @foreach (var converter in ConverterService.GetAllConverters())
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark"
+                                   asp-area=""
+                                   asp-controller="@converter.ControllerName"
+                                   asp-action="Index">
+                                    @converter.ConverterType.ToString()
+                                </a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>

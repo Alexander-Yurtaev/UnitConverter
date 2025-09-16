@@ -6,6 +6,7 @@ namespace UnitConverter.Mvc.Converters;
 public class TemperatureConverter : ITemperatureConverter
 {
     public ConverterType ConverterType => ConverterType.Temperature;
+    public string ControllerName => "Temperature";
 
     public ResultModel Convert(Units unitFrom, Units unitTo, decimal value)
     {

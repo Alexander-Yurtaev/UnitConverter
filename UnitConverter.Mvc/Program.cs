@@ -1,4 +1,5 @@
 using UnitConverter.Mvc.Extensions;
+using UnitConverter.Mvc.Services;
 
 namespace UnitConverter.Mvc
 {
@@ -12,7 +13,8 @@ namespace UnitConverter.Mvc
             builder.Services.AddControllersWithViews();
 
             builder.Services.AddConverterFactory();
-            
+            builder.Services.AddSingleton<ConverterService>();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
